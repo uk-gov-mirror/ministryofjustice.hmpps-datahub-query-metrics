@@ -49,8 +49,13 @@ class AthenaMetricsExtractor(
       if (batchGetQueryExecutionResult.queryExecutions.isNullOrEmpty()) {
         throw IllegalStateException("There are no batch executions found for the given list somehow")
       }
-      val executions = batchGetQueryExecutionResult.queryExecutions!!.sortedBy { it.status!!.completionDateTime }
-      if (executions.first().status!!.state!! == QueryExecutionState.Running || executions.first().status!!.completionDateTime!!.toJvmInstant() <= startTime) {
+      val executions = batchGetQueryExecutionResult.queryExecutions?.sortedBy { it.status?.completionDateTime } ?: emptyList()
+      if (
+        executions.first().status == null ||
+        executions.first().status!!.state == QueryExecutionState.Running ||
+        executions.first().status!!.completionDateTime?.toJvmInstant() == null ||
+        executions.first().status!!.completionDateTime?.toJvmInstant()!! <= startTime
+      ) {
         break
       }
       val filteredExecutions = executions.filter {
