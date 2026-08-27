@@ -20,7 +20,7 @@ class ExtractionJob(
     private val log = LoggerFactory.getLogger(this::class.java)
   }
 
-  @Scheduled(cron = "0 * * * * *")
+  @Scheduled(cron = "0 0 * * * *")
   fun scheduledFunction() {
     log.info("Starting metrics extraction")
     val results = runBlocking {
