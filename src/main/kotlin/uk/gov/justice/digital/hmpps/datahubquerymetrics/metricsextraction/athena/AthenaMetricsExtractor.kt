@@ -88,6 +88,7 @@ class AthenaMetricsExtractor(
         queryInfo.datasourceName,
         queryInfo.reportOrDashboardId,
         queryInfo.hasProbationDatasources,
+        queryInfo.queryType,
       )
     }
   }

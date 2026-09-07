@@ -1,7 +1,5 @@
 package uk.gov.justice.digital.hmpps.datahubquerymetrics.metricsextraction
 
-import org.slf4j.LoggerFactory
-
 data class QueryInfo(
   val productId: String,
   val productName: String,
@@ -10,20 +8,17 @@ data class QueryInfo(
   val databaseName: String?,
   val reportOrDashboardId: String,
   val hasProbationDatasources: Boolean,
+  val queryType: QueryType,
 )
 
 interface MetricsExtractor {
   suspend fun extractQueryMetrics(): Collection<SingleQueryMetricsInfo>
 
-  companion object {
-    private val log = LoggerFactory.getLogger(this::class.java)
-  }
-
   fun takeStringOrNull(str: String): String? = if (str.isNotBlank() && str != "null") str else null
 
   fun extractQueryInfo(query: String?): QueryInfo {
     if (!query!!.contains("QUERY_INFO")) {
-      return QueryInfo("", "", "", "", "", "", false)
+      return QueryInfo("", "", "", "", "", "", false, QueryType.SUMMARY)
     }
     val queryInfo = query.substringAfter("QUERY_INFO|||").substringBefore("|||END").split("|||")
 
@@ -35,6 +30,7 @@ interface MetricsExtractor {
       takeStringOrNull(queryInfo[4]),
       queryInfo[5],
       queryInfo[6].toBoolean(),
+      QueryType.valueOf(queryInfo[7]),
     )
   }
 }

@@ -12,14 +12,14 @@ class MetricConfiguration {
   fun numQueriesCounter(): Counter = Counter.builder()
     .name("queries")
     .help("Number of queries")
-    .labelNames("report_id", "variant_id", "unique_output_port_id", "datasource", "parent_domain", "status", "query_engine")
+    .labelNames("report_id", "variant_id", "unique_output_port_id", "datasource", "parent_domain", "status", "query_engine", "query_type")
     .unit(null)
     .register()
 
   @Bean
   fun runtimeHistogram(): Histogram = Histogram.builder()
     .name("single_query_metric")
-    .labelNames("report_id", "variant_id", "unique_output_port_id", "datasource", "parent_domain", "state", "query_engine")
+    .labelNames("report_id", "variant_id", "unique_output_port_id", "datasource", "parent_domain", "state", "query_engine", "query_type")
     // Numbers are in seconds as that is prometheus standard
     .classicUpperBounds(
       0.001, // 1 ms

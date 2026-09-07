@@ -34,12 +34,12 @@ class ExtractionJob(
 
     results.forEach {
       numQueriesCounter
-        .labelValues(it.productId, it.reportOrDashboardId, "${it.productId}::${it.reportOrDashboardId}", it.datasourceName, if (it.hasProbationDatasources) "probation" else "prisons", it.state.name, it.queryEngine.name)
+        .labelValues(it.productId, it.reportOrDashboardId, "${it.productId}::${it.reportOrDashboardId}", it.datasourceName, if (it.hasProbationDatasources) "probation" else "prisons", it.state.name, it.queryEngine.name, it.queryType.name)
         .inc()
 
       // If we plot failed executions we'll massively skew results due to them taking very little time
       if (it.state == QueryExecutionStatus.SUCCEEDED) {
-        runtimeHistogram.labelValues(it.productId, it.reportOrDashboardId, "${it.productId}::${it.reportOrDashboardId}", it.datasourceName, if (it.hasProbationDatasources) "probation" else "prisons", it.state.name, it.queryEngine.name)
+        runtimeHistogram.labelValues(it.productId, it.reportOrDashboardId, "${it.productId}::${it.reportOrDashboardId}", it.datasourceName, if (it.hasProbationDatasources) "probation" else "prisons", it.state.name, it.queryEngine.name, it.queryType.name)
           .observe(it.totalRunTimeMicroseconds / 1_000_000.0)
       }
     }

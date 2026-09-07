@@ -18,7 +18,13 @@ data class SingleQueryMetricsInfo(
   val databaseName: String?,
   val reportOrDashboardId: String,
   val hasProbationDatasources: Boolean,
+  val queryType: QueryType,
 )
+
+enum class QueryType {
+  NORMAL,
+  SUMMARY
+}
 
 enum class QueryEngine {
   ATHENA,
