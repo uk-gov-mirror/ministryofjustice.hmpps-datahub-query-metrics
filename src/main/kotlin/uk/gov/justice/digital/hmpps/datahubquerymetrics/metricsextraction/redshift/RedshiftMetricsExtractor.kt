@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service
 import uk.gov.justice.digital.hmpps.datahubquerymetrics.metricsextraction.MetricsExtractor
 import uk.gov.justice.digital.hmpps.datahubquerymetrics.metricsextraction.QueryEngine
 import uk.gov.justice.digital.hmpps.datahubquerymetrics.metricsextraction.QueryExecutionStatus
-import uk.gov.justice.digital.hmpps.datahubquerymetrics.metricsextraction.QueryType
 import uk.gov.justice.digital.hmpps.datahubquerymetrics.metricsextraction.SingleQueryMetricsInfo
 import java.time.LocalDateTime
 import java.time.ZoneOffset

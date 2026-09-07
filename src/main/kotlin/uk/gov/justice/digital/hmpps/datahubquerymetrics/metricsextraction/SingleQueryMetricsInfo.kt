@@ -23,7 +23,7 @@ data class SingleQueryMetricsInfo(
 
 enum class QueryType {
   NORMAL,
-  SUMMARY
+  SUMMARY,
 }
 
 enum class QueryEngine {
