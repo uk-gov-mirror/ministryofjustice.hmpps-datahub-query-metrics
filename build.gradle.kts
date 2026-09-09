@@ -6,6 +6,14 @@ plugins {
 val awsVersion = "1.8.44"
 
 dependencies {
+  constraints {
+//    implementation("io.prometheus:prometheus-metrics-tracer-initializer:1.8.0") {
+//      because("Keep all Prometheus metrics libraries on 1.8.0")
+//    }
+    implementation("io.prometheus:prometheus-metrics-tracer-otel-agent:1.8.0") {
+      because("Upgrade otel-agent to 1.8.0 to solve vuln issues")
+    }
+  }
   implementation("uk.gov.justice.service.hmpps:hmpps-kotlin-spring-boot-starter:3.0.1")
   implementation("org.springframework.boot:spring-boot-starter-webflux")
   implementation("org.springframework.boot:spring-boot-starter-webclient")
@@ -13,8 +21,8 @@ dependencies {
   implementation("aws.sdk.kotlin:athena:$awsVersion")
   implementation("aws.sdk.kotlin:redshiftdata:$awsVersion")
   implementation("aws.sdk.kotlin:sts:$awsVersion")
-  implementation("io.prometheus:prometheus-metrics-core:1.8.0")
-  implementation("io.prometheus:prometheus-metrics-exporter-httpserver:1.8.0")
+  implementation("io.prometheus:prometheus-metrics-core:1.7.0")
+  implementation("io.prometheus:prometheus-metrics-exporter-httpserver:1.7.0")
   implementation("org.springframework.boot:spring-boot-starter-actuator")
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.11.0")
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.11.0")
