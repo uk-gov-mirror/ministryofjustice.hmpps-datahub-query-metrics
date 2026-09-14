@@ -7,6 +7,7 @@ data class QueryInfo(
   val datasourceCatalog: String?,
   val databaseName: String?,
   val reportOrDashboardId: String,
+  val reportOrDashboardName: String,
   val hasProbationDatasources: Boolean,
   val queryType: QueryType,
 )
@@ -18,7 +19,7 @@ interface MetricsExtractor {
 
   fun extractQueryInfo(query: String?): QueryInfo {
     if (!query!!.contains("QUERY_INFO")) {
-      return QueryInfo("", "", "", "", "", "", false, QueryType.SUMMARY)
+      return QueryInfo("", "", "", "", "", "", "", false, QueryType.SUMMARY)
     }
     val queryInfo = query.substringAfter("QUERY_INFO|||").substringBefore("|||END").split("|||")
 
@@ -29,8 +30,9 @@ interface MetricsExtractor {
       takeStringOrNull(queryInfo[3]),
       takeStringOrNull(queryInfo[4]),
       queryInfo[5],
-      queryInfo[6].toBoolean(),
-      QueryType.valueOf(queryInfo[7]),
+      queryInfo[6],
+      queryInfo[7].toBoolean(),
+      QueryType.valueOf(queryInfo[8]),
     )
   }
 }

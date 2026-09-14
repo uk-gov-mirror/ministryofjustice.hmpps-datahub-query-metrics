@@ -17,6 +17,7 @@ data class SingleQueryMetricsInfo(
   val datasourceCatalog: String?,
   val databaseName: String?,
   val reportOrDashboardId: String,
+  val reportOrDashboardName: String,
   val hasProbationDatasources: Boolean,
   val queryType: QueryType,
 )

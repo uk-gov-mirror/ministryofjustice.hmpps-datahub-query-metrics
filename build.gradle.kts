@@ -7,9 +7,6 @@ val awsVersion = "1.8.44"
 
 dependencies {
   constraints {
-//    implementation("io.prometheus:prometheus-metrics-tracer-initializer:1.8.0") {
-//      because("Keep all Prometheus metrics libraries on 1.8.0")
-//    }
     implementation("io.prometheus:prometheus-metrics-tracer-otel-agent:1.8.0") {
       because("Upgrade otel-agent to 1.8.0 to solve vuln issues")
     }

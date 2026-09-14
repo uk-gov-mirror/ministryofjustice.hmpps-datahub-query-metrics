@@ -33,7 +33,7 @@ import kotlin.String
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
 @AutoConfigureWebTestClient
-class `__IntegrationTest.txt` {
+class IntegrationTest {
 
   @Autowired
   lateinit var webTestClient: WebTestClient
@@ -85,7 +85,7 @@ class `__IntegrationTest.txt` {
       ),
       generateRedshiftResult(
         queryExecutionId = 3L,
-        queryInfo = "/* QUERY_INFO|||dpdId2|||dpdName2|||datasource2|||database2|||catalog2|||reportId2|||reportName2|||false|||END */",
+        queryInfo = "/* QUERY_INFO|||dpdId2|||dpdName2|||datasource2|||database2|||catalog2|||reportId2|||reportName2|||false|||NORMAL|||END */",
       ),
     )
     whenever(statementResult.records).thenReturn(records)
@@ -97,7 +97,7 @@ class `__IntegrationTest.txt` {
     submissionDateTime: String = "2026-01-01 00:00:00.000000",
     completionDateTime: String = "2026-01-01 00:01:23.000",
     totalExecutionTimeMillis: Long = (83L * 1000L),
-    queryInfo: String = "/* QUERY_INFO|||dpdId|||dpdName|||datasource1|||database1|||catalog1|||reportId|||reportName|||false|||END */",
+    queryInfo: String = "/* QUERY_INFO|||dpdId|||dpdName|||datasource1|||database1|||catalog1|||reportId|||reportName|||false|||NORMAL|||END */",
     queryExecutionId: Long = 234897L,
   ): List<Field> = listOf(
     Field.LongValue(queryExecutionId),
@@ -132,7 +132,7 @@ class `__IntegrationTest.txt` {
         queryExecutionId = "qeid3",
         completionDateTime = Instant.parse("2026-01-01T00:02:41.000000+01:00"),
         totalExecutionTimeMillis = 161L * 1000L,
-        queryInfo = "/* QUERY_INFO|||dpdId2|||dpdName2|||datasource2|||database2|||catalog2|||reportId2|||reportName2|||false|||END */",
+        queryInfo = "/* QUERY_INFO|||dpdId2|||dpdName2|||datasource2|||database2|||catalog2|||reportId2|||reportName2|||false|||NORMAL|||END */",
       ),
     )
     val batchGetQueryExecutionResponse = mock<BatchGetQueryExecutionResponse>()
@@ -145,7 +145,7 @@ class `__IntegrationTest.txt` {
     submissionDateTime: Instant = Instant.parse("2026-01-01T00:00:00.000000+01:00"),
     completionDateTime: Instant = Instant.parse("2026-01-01T00:01:23.000000+01:00"),
     totalExecutionTimeMillis: Long = (83L * 1000L),
-    queryInfo: String = "/* QUERY_INFO|||dpdId|||dpdName|||datasource1|||database1|||catalog1|||reportId|||reportName|||false|||END */",
+    queryInfo: String = "/* QUERY_INFO|||dpdId|||dpdName|||datasource1|||database1|||catalog1|||reportId|||reportName|||false|||NORMAL|||END */",
     queryExecutionId: String = "qeid1",
   ): QueryExecution {
     val queryExecution1Status = mock<QueryExecutionStatus>()

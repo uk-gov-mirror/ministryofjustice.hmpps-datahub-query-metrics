@@ -94,6 +94,7 @@ class RedshiftMetricsExtractor(
             queryInfo.datasourceCatalog,
             queryInfo.datasourceName,
             queryInfo.reportOrDashboardId,
+            queryInfo.reportOrDashboardName,
             queryInfo.hasProbationDatasources,
             queryInfo.queryType,
           )
